@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connection</title>
+</head>
+<body>
+<h1>Connection</h1>
+<form method="post" action="{% url 'connect' %}">
+    {% csrf_token %}
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+    <input type="submit" value="Connect">
+</form>
+<a href="/register/">Register</a>
+</body>
+</html>
