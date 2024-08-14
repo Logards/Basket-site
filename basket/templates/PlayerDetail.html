@@ -5,33 +5,30 @@
     <title>{{ player.first_name }} {{ player.last_name }}</title>
     {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{ player.first_name }} {{ player.last_name }}</div>
-        <p class="text-gray-700 text-base">
-            Position: {{ player.position }}<br>
-            Team: {{ player.team.full_name }}<br>
-            Height: {{ player.height }}<br>
-            Weight: {{ player.weight }}<br>
-            Number: {{ player.jersey_number }}<br>
-            College: {{ player.college }}<br>
-            Country: {{ player.country }}<br>
-            Draft Year: {{ player.draft_year }}<br>
-            Draft Round: {{ player.draft_round }}<br>
-            Draft Number: {{ player.draft_number }}<br>
-        </p>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">{{ player.name}}  {{ player.last_name }}</h2>
+        Position: {{ player.position }}<br>
+        Team: {{ player.team.full_name }}<br>
+        Height: {{ player.height }}<br>
+        Weight: {{ player.weight }}<br>
+        Number: {{ player.jersey_number }}<br>
+        College: {{ player.college }}<br>
+        Country: {{ player.country }}<br>
+        Draft Year: {{ player.draft_year }}<br>
+        Draft Round: {{ player.draft_round }}<br>
+        Draft Number: {{ player.draft_number }}<br>
     </div>
 </div>
-<div class="max-w-sm rounded overflow-hidden shadow-lg" id={{ player.id }}>
-    <div class="px-6 py-4">
-        <a href="{% url 'team_detail' player.team.id %}">
-            <div class="font-bold text-xl mb-2">Team of the player: {{ player.team.full_name }}</div>
-        </a>
-        <p class="text-gray-700 text-base">
-        </p>
+<a href="{% url 'team_detail' player.team.id %}" class="block max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Team of the player: {{ player.team.full_name }}</h2>
+        </div>
     </div>
-</div>
+</a>
 </body>
 </html>

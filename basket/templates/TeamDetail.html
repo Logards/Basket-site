@@ -5,19 +5,32 @@
     <title>{{ player.first_name }} {{ player.last_name }}</title>
     {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{ team.full_name }}</div>
-        <p class="text-gray-700 text-base">
-            Conference: {{ team.conference }}<br>
-            Division: {{ team.division }}<br>
-            City: {{ team.city }}<br>
-            Name: {{ team.name }}<br>
-            Abbreviation: {{ team.abbreviation }}<br>
-        </p>
+<div class="navbar bg-base-100">
+    <a href="{% url 'players' %}" class="btn btn-ghost text-xl">Players</a>
+    <a href="{% url 'teams' %}" class="btn btn-ghost text-xl">Teams</a>
+    <a href="{% url 'matchs' %}" class="btn btn-ghost text-xl">Matchs</a>
+</div>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">{{ team.full_name}}</h2>
+        Conference: {{ team.conference }}<br>
+        Division: {{ team.division }}<br>
+        City: {{ team.city }}<br>
+        Name: {{ team.name }}<br>
+        Abbreviation: {{ team.abbreviation }}<br>
     </div>
 </div>
+{% for player in players %}
+    <a href="{% url 'player_detail' player.id %}" class="block max-w-sm rounded overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">{{ player.first_name }} {{ player.last_name }}</h2>
+            </div>
+        </div>
+    </a>
+{% endfor %}
 </body>
 </html>
